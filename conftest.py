@@ -2,12 +2,14 @@
 import pytest
 from selene import browser, have
 
-@pytest.fixture # по дефолту scope = "function"
+# по дефолту scope = "function"
+@pytest.fixture
 def log_test():
     print("\nTEST_start")
     yield
     print("TEST_end")
 
+# опционально, по дефолту in
 @pytest.fixture(scope="function") # опционально, по дефолту in
 def window_browser_mode():
     browser.config.window_width = 2560

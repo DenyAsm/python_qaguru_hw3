@@ -3,8 +3,7 @@ from selene import browser, have, be
 
 def test_google_captcha_should_be_shown(log_test, open_google):
     browser.element('[name="q"]').should(be.visible).type('qa.guru')
-    browser.element('[name="btnK"]').should(be.visible).should(be.clickable)
-    browser.element('[name="btnK"]').click()
+    browser.element('[name="btnK"]').should(be.visible).should(be.clickable).click()
     browser.element('html').should(have.text('Об этой странице'))
 
 def test_other_site_search_positive(log_test, open_duck):
