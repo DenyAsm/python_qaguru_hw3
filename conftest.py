@@ -10,7 +10,7 @@ def log_test():
     print("TEST_end")
 
 # опционально, по дефолту in
-@pytest.fixture(scope="function") # опционально, по дефолту in
+@pytest.fixture(scope="function")
 def window_browser_mode():
     browser.config.window_width = 2560
     browser.config.window_height = 1440
