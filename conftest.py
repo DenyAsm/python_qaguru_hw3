@@ -8,7 +8,6 @@ def log_test():
     yield
     print("TEST_end")
 
-
 @pytest.fixture(scope="function") # опционально, по дефолту in
 def window_browser_mode():
     browser.config.window_width = 2560
@@ -22,7 +21,6 @@ def window_browser_mode():
 def open_google(window_browser_mode):
     browser.open('https://google.com')
     browser.should(have.script_returned(True, 'return document.readyState === "complete"'))
-
     print("Open main - Google")
     yield
 
@@ -30,6 +28,5 @@ def open_google(window_browser_mode):
 def open_duck(window_browser_mode):
     browser.open('https://duckduckgo.com/')
     browser.should(have.script_returned(True, 'return document.readyState === "complete"'))
-
     print('Open other site - Duck')
     yield
