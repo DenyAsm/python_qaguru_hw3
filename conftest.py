@@ -1,27 +1,32 @@
 import pytest
-from selene import browser
+from selene import browser, have
 
 @pytest.fixture
 def log_test():
-
-    print("\nStart TEST ...")
+    print("\nTEST_start")
     yield
-    print("End TEST")
+    print("TEST_end")
 
 
 @pytest.fixture(scope="function")
 def window_browser_mode():
-
-    browser.config.window_width = 2000
-    browser.config.window_height = 1200
+    browser.config.window_width = 1920
+    browser.config.window_height = 1080
     print("OPEN - Window size mode")
     yield
     browser.quit()
-    print("CLOSE")
+    print("\nCLOSE")
 
 @pytest.fixture
 def open_google(window_browser_mode):
-
     browser.open('https://google.com')
+    browser.should(have.script_returned(True, 'return document.readyState === "complete"'))
     print("Open main Google")
+    yield
+
+@pytest.fixture
+def open_other_browser(window_browser_mode):
+    browser.open('https://duckduckgo.com/')
+    browser.should(have.script_returned(True, 'return document.readyState === "complete"'))
+    print('Open other site - Duck')
     yield
