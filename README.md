@@ -1,6 +1,6 @@
 ### fixture -> setup + teardown
 
-### `pytest test_google_duckduckgo.py --setup-plan`
+### :exclamation: `pytest test_google_duckduckgo.py --setup-plan`
 
 #### В фикстурах используются `scope`, который позволяет указать, когда будет вызываться фикстура. Возможные значения:
 
